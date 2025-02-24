@@ -24,8 +24,8 @@ public class Item_coin_Collet : Colect_Base
     {
         if (collision.transform.CompareTag(compareTagPowerUp))
         {
-
             collect = true;
+            Invoke(nameof(OperacaodeTempo), 5);
         }
 
         if (collision.transform.CompareTag(compareTag))
@@ -45,13 +45,13 @@ public class Item_coin_Collet : Colect_Base
         if (collect)
         {
             transform.position = Vector3.Lerp(transform.position, PlayerControll.Instance.transform.position, lerp * Time.deltaTime);
-            /*if (Vector3.Distance(transform.position, PlayerController.Instance.transform.position) < minDistance)
-            {
-                //HideItens();
-                //Destroy(gameObject);
-            }*/
         }
     }
 
+
+    private void OperacaodeTempo()
+    {
+        lerp *= 10;
+    }
 
 }
