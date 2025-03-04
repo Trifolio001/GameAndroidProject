@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ccf8b9e26d44414e89cfd6c1c96f03b, type: 3}
+  m_Name: SO Levels Complit1
+  m_EditorClassIdentifier: 
+  levels:
+  - levelGame: {fileID: 7678543301210830135, guid: 632265bb7f3e6fb4cb1a3cecfbf3f74c, type: 3}
+    LimitMap: 10
+  - levelGame: {fileID: 5559123679564688887, guid: 272bbb26f7c696f4c87eeecfdc91eb8b, type: 3}
+    LimitMap: 10
+  - levelGame: {fileID: 2367280442490891034, guid: 15991f3e35396b7448abd55e02a9ff86, type: 3}
+    LimitMap: 30

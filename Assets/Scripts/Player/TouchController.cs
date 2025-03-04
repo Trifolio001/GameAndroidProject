@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class TouchController : MonoBehaviour
 {
-
     public Vector2 pastposition;
     public float velocity;
+    private float limit = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +23,20 @@ public class TouchController : MonoBehaviour
         }
         pastposition = Input.mousePosition;
 
+        if(transform.position.x < -limit)
+        {
+            transform.position = new Vector3(-limit, 0, 0);
+        }
+        if (transform.position.x > limit)
+        {
+            transform.position = new Vector3(limit, 0, 0);
+        }
+
+    }
+
+    public void LimitUpdate(float num) 
+    {
+        limit = num;
     }
 
     public void Move(float speed)

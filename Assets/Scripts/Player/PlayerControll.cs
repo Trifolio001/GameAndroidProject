@@ -43,11 +43,11 @@ public class PlayerControll : Singleton<PlayerControll>
     public float duracao = 1;
     public Ease ease = Ease.InOutQuad;
 
-    //public GameObject EffectVisual;
+    public GameObject EffectVisual;
     public List<AnimatorEffectVisual> effectvisual;
-    public Material Material1 = new Material(Shader.Find("Standard"));
-    public Material Material2 = new Material(Shader.Find("Standard"));
-    public Material Material3 = new Material(Shader.Find("Standard"));
+    public Material Material1;
+    public Material Material2;
+    public Material Material3;
     private Renderer rendererObject;
 
     [System.Serializable]
@@ -69,8 +69,6 @@ public class PlayerControll : Singleton<PlayerControll>
     {
         if (!_canRun) return;
 
-
-
         transform.position = Vector3.Lerp(transform.position, new Vector3 (target.position.x, transform.position.y, transform.position.z), lerpSpeed * Time.deltaTime);
         transform.Translate(transform.forward * _currentSpeed * Time.deltaTime);
         if (fly)
@@ -81,7 +79,6 @@ public class PlayerControll : Singleton<PlayerControll>
                 Invoke(nameof(OperacaodeTempo), duracao + 0.1f);
             }
         }
-
     }
 
     private void OperacaodeTempo()
@@ -202,6 +199,5 @@ public class PlayerControll : Singleton<PlayerControll>
             rendererObject.material = material;
         }
     }
-
 
 }

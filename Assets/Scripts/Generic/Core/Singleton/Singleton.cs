@@ -4,7 +4,6 @@ using UnityEngine;
 
 namespace generic.core.Singleton
 {
-
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         public static T Instance;

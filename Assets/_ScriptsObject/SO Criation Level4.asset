@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fefc10f91bfc04f8f15c98aa47d625, type: 3}
+  m_Name: SO Criation Level4
+  m_EditorClassIdentifier: 
+  artType: 1
+  Limitmoviment: 10
+  levelPiecesStart:
+  - {fileID: 4841093233406182744, guid: 5496b92e2a1171940acc51071ca1b3d8, type: 3}
+  levelPieces:
+  - {fileID: 8381452906052058873, guid: 07c111d88eecfa14694a6f67b90e8534, type: 3}
+  - {fileID: 6880076481654313581, guid: 3efeb3d390d5cce40b262573c2ba9155, type: 3}
+  - {fileID: 7762679818367317697, guid: 3df68545a4c20c34f95efb89ea89c014, type: 3}
+  - {fileID: 6711866080615319694, guid: 095640c4b37371e4599ce8b45faea3c5, type: 3}
+  levelPiecesEnd:
+  - {fileID: 6434268701225803403, guid: 1fb3814796cd73d4bac4b15ba270e362, type: 3}
+  PiecesStartNumber: 3
+  PiecesNumber: 90
+  PiecesEndNumber: 1
+  piecesExpecialSetup:
+  - levelPiecesspecial: {fileID: 3798910058048672287, guid: 91dd5cb9eeef83040aaa04edbe892b44, type: 3}
+    inicialpausespecialitem: 5
+    pausespecialitem: 15
