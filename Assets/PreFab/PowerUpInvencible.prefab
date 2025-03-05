@@ -82,6 +82,7 @@ MonoBehaviour:
   graphicItem: {fileID: 3840176244133241251}
   audioSource: {fileID: 0}
   duration: 15
+  RestantTimeFinish: 4.5
 --- !u!1 &3840176244873069449
 GameObject:
   m_ObjectHideFlags: 0

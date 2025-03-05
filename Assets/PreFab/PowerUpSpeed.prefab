@@ -68,7 +68,8 @@ MonoBehaviour:
   timeToHide: 2
   graphicItem: {fileID: 3087467606808388392}
   audioSource: {fileID: 0}
-  duration: 5
+  duration: 10
+  RestantTimeFinish: 4.5
   amountToSpeed: 15
 --- !u!65 &3087467606808388406
 BoxCollider:

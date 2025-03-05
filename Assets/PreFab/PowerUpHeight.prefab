@@ -82,6 +82,7 @@ MonoBehaviour:
   graphicItem: {fileID: 4277408428324014252}
   audioSource: {fileID: 0}
   duration: 14.9
+  RestantTimeFinish: 4.5
   amountHeight: 5
   animationDuration: 2
   ease: 1

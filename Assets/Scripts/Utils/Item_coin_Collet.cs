@@ -15,6 +15,10 @@ public class Item_coin_Collet : Colect_Base
     public string compareTagPowerUp = "CoinCollect";
     //public SpriteRenderer spritRender;
 
+    public void Start()
+    {
+        CoinsAnimatorManager.Instance.registercoins(this);
+    }
 
     private void Awake()
     {

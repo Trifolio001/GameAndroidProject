@@ -33,6 +33,15 @@ public class PlayerControll : Singleton<PlayerControll>
 
     private float _currentSpeed;
 
+    public BounceHelper bouceHelper;
+
+
+    [Header("Animation Start")]
+    public float scaleDuration = .2f;
+    public float scaleTimeBetweenPiece = .1f;
+    public Ease easeStartGame = Ease.OutBack;
+
+    [Header("Animation PowerUp")]
     private bool _canRun;
     private Vector3 _pos;
     private Vector3 _startPosition;
@@ -41,14 +50,14 @@ public class PlayerControll : Singleton<PlayerControll>
     public bool fly = false;
     public float Movement = 2f;
     public float duracao = 1;
-    public Ease ease = Ease.InOutQuad;
-
+    public Ease easeAnimatorFly = Ease.InOutQuad;
     public GameObject EffectVisual;
     public List<AnimatorEffectVisual> effectvisual;
     public Material Material1;
     public Material Material2;
     public Material Material3;
     private Renderer rendererObject;
+    private List<ColorChange> colorChange;
 
     [System.Serializable]
     public class AnimatorEffectVisual
@@ -62,6 +71,13 @@ public class PlayerControll : Singleton<PlayerControll>
         _startPosition = transform.position;
         animatormanagerPlayer.Play(AnimatorManager.AnimationType.IDLE, VelAnimationRun);
         _currentSpeed = speed;
+
+        colorChange = new List<ColorChange>();
+        foreach (var child in gameObject.GetComponentsInChildren<ColorChange>())
+        {
+            colorChange.Add(child);
+        }
+
     }
 
     // Update is called once per frame
@@ -75,7 +91,7 @@ public class PlayerControll : Singleton<PlayerControll>
         {
             if (_curretTween == null)
             {
-                _curretTween = transform.DOLocalMoveY(transform.position.y + Movement, duracao).SetEase(ease, 1);
+                _curretTween = transform.DOLocalMoveY(transform.position.y + Movement, duracao).SetEase(easeAnimatorFly, 1);
                 Invoke(nameof(OperacaodeTempo), duracao + 0.1f);
             }
         }
@@ -115,6 +131,21 @@ public class PlayerControll : Singleton<PlayerControll>
     public void StarToRun()
     {
         _canRun = false;
+        StartCoroutine(ScalePersonagePlayer());
+        Invoke(nameof(Operationstart), scaleDuration);
+    }
+
+    IEnumerator ScalePersonagePlayer()
+    {
+
+        CoinsAnimatorManager.Instance.StartAnimator();
+        transform.localScale = Vector3.zero;
+        transform.DOScale(1, scaleDuration).SetEase(easeStartGame);
+        yield return null;
+    }
+
+    private void Operationstart()
+    {
         animatormanagerPlayer.Play(AnimatorManager.AnimationType.START, 1);
     }
 
@@ -179,6 +210,23 @@ public class PlayerControll : Singleton<PlayerControll>
         animatormanagerPlayer.Play(AnimatorManager.AnimationType.RUN, VelAnimationRun);
     }
 
+    public void timePowerUpLast(float timeLast)
+    {
+        Debug.Log("passo no 2");
+        for (int i = 0; i < colorChange.Count; i++) 
+        {
+            StartCoroutine(timePowerUpLastAnimation(i, timeLast));
+        }
+    }
+
+    IEnumerator timePowerUpLastAnimation(int i, float timeLast)
+    {
+
+        Debug.Log("passo no 3");
+        yield return new WaitForSeconds(timeLast);
+        colorChange[i].InitiateAnimate();
+    }
+
     public void ChangeCoinCollectorSize(float amount)
     {
         if (amount != 1)
@@ -200,4 +248,8 @@ public class PlayerControll : Singleton<PlayerControll>
         }
     }
 
+    public void Bounce()
+    {
+        bouceHelper.Bounce();
+    }
 }
