@@ -18,12 +18,13 @@ public class Colect_Base : MonoBehaviour
 
     private void Awake()
     {
-        capture = false;
-       /* if (particlesystem != null)
+       capture = false;
+        /*if (particlesystem != null)
         {
             particlesystem.transform.SetParent(null);
         }*/
     }
+
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -48,6 +49,7 @@ public class Colect_Base : MonoBehaviour
         {
             if (particlesystem != null)
             {
+                particlesystem.transform.SetParent(null);
                 particlesystem.Play();
                 capture = true;
             }

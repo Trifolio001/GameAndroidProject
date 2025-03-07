@@ -59,6 +59,13 @@ public class PlayerControll : Singleton<PlayerControll>
     private Renderer rendererObject;
     private List<ColorChange> colorChange;
 
+    [Header("Animation EffectGame")]
+
+    public ParticleSystem particleBloom;
+    public ParticleSystem particleShield;
+    public ParticleSystem particleIma;
+    public ParticleSystem particleSpeed;
+
     [System.Serializable]
     public class AnimatorEffectVisual
     {
@@ -163,6 +170,10 @@ public class PlayerControll : Singleton<PlayerControll>
 
     public void PowerUpSpeedUp(float f)
     {
+        if (particleSpeed != null)
+        {
+            particleSpeed.Play();
+        }
         animatormanagerPlayer.Play(AnimatorManager.AnimationType.RUN, (f/VelAnimationRun)/4);
         _currentSpeed = f;
     }
@@ -180,6 +191,10 @@ public class PlayerControll : Singleton<PlayerControll>
         {
             changeVisual(Material3);
             animatormanagerPlayer.Play(AnimatorManager.AnimationType.MAGNETIC, VelAnimationRun);
+            if (particleShield != null)
+            {
+                particleShield.Play();
+            }
         }
         else
         {
@@ -190,6 +205,10 @@ public class PlayerControll : Singleton<PlayerControll>
 
     public void ChangeHeight(float amount, float duration, float animationDuration, Ease ease)
     {
+        if (particleBloom != null)
+        {
+            particleBloom.Play();
+        }
         rigidbodyPlayer.useGravity = (false);
         transform.DOMoveY(_startPosition.y + amount, animationDuration).SetEase(ease);//.OnComplete(ResetHeight);a
         animatormanagerPlayer.Play(AnimatorManager.AnimationType.FLY, 0.4f);
@@ -212,7 +231,6 @@ public class PlayerControll : Singleton<PlayerControll>
 
     public void timePowerUpLast(float timeLast)
     {
-        Debug.Log("passo no 2");
         for (int i = 0; i < colorChange.Count; i++) 
         {
             StartCoroutine(timePowerUpLastAnimation(i, timeLast));
@@ -222,7 +240,6 @@ public class PlayerControll : Singleton<PlayerControll>
     IEnumerator timePowerUpLastAnimation(int i, float timeLast)
     {
 
-        Debug.Log("passo no 3");
         yield return new WaitForSeconds(timeLast);
         colorChange[i].InitiateAnimate();
     }
@@ -231,6 +248,10 @@ public class PlayerControll : Singleton<PlayerControll>
     {
         if (amount != 1)
         {
+            if (particleIma != null)
+            {
+                particleIma.Play();
+            }
             changeVisual(Material2);
         }
         else {

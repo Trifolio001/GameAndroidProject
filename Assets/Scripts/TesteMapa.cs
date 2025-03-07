@@ -6,13 +6,14 @@ public class TesteMapa : MonoBehaviour
 {
 
     public List<SpriteRenderer> spriteRenderers;
+    public GameObject coin;
     // Start is called before the first frame update
     void Start()
     {
         //ColorRenderers = new List<Color>();
         //spriteRenderers = new List<SpriteRenderer>();
 
-        foreach (var child in gameObject.GetComponentsInChildren<ConeSpawnPiece>())
+        /*foreach (var child in gameObject.GetComponentsInChildren<ConeSpawnPiece>())
         {
             Destroy(child);
         }
@@ -27,6 +28,12 @@ public class TesteMapa : MonoBehaviour
         foreach (var child in gameObject.GetComponentsInChildren<RandomPredioStates>())
         {
             Destroy(child);
+        }*/
+        foreach (var child in gameObject.GetComponentsInChildren<Item_coin_Collet>())
+        {
+            coin.transform.position = child.transform.position;
+            Instantiate(coin).transform.SetParent(transform);
+            Destroy(child.gameObject);
         }
 
     }
